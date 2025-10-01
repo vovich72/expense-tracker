@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Expense Tracker</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/css/css2.css">
+    <script src="/js/chart.js"></script>
+   <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">-->
+    <style>
+        .error-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+        }
+        .error-icon {
+            font-size: 4rem;
+            color: var(--danger);
+            margin-bottom: 20px;
+        }
+        .error-title {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+        .error-message {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        .error-details {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        .error-code {
+            background: var(--dark);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card error-container">
+        <div class="error-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        
+        <h1 class="error-title" th:text="${errorTitle} ?: 'Oops! Something went wrong'">Oops! Something went wrong</h1>
+        
+        <p class="error-message" th:text="${errorMessage} ?: 'We encountered an unexpected error. Please try again later.'">
+            We encountered an unexpected error. Please try again later.
+        </p>
+        
+        <div th:if="${status}" class="error-details">
+            <div><strong>Status Code:</strong> <span class="error-code" th:text="${status}">500</span></div>
+            <div th:if="${message}"><strong>Message:</strong> <span th:text="${message}"></span></div>
+            <div th:if="${exception}"><strong>Exception:</strong> <span th:text="${exception}"></span></div>
+        </div>
+        
+        <div style="display: flex; gap: 15px; justify-content: center; margin-top: 30px;">
+            <a href="/" class="btn btn-primary">
+                <i class="fas fa-home"></i> Go to Login
+            </a>
+            <a href="javascript:history.back()" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Go Back
+            </a>
+        </div>
+    </div>
+</body>
+</html>

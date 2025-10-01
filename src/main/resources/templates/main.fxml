@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.expensetracker.controller.LoginController">
+   <children>
+      <VBox alignment="CENTER" spacing="20.0" 
+            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" 
+            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+         </padding>
+         <children>
+            <Label text="Expense Tracker" style="-fx-text-fill: #2A5058;">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            
+            <VBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10;">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+               </padding>
+               
+               <Label text="Username" style="-fx-font-weight: bold;"/>
+               <TextField fx:id="usernameField" promptText="Enter username" />
+               
+               <Label text="Password" style="-fx-font-weight: bold;"/>
+               <PasswordField fx:id="passwordField" promptText="Enter password" />
+               
+               <Label fx:id="errorLabel" textFill="RED" visible="false" />
+               
+               <HBox spacing="10.0" alignment="CENTER">
+                  <Button fx:id="loginButton" mnemonicParsing="false" text="Login" 
+                          style="-fx-background-color: #3B5998; -fx-text-fill: white;"/>
+                  <Button fx:id="registerButton" mnemonicParsing="false" text="Register" 
+                          style="-fx-background-color: #68BB65; -fx-text-fill: white;"/>
+               </HBox>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+   
+   <stylesheets>
+      <URL value="@../static/css/style.css" />
+   </stylesheets>
+</AnchorPane>

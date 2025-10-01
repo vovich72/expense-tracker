@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres
+    container_name: 'expense_tracker'
+#    restart: always
+    command: ["postgres", "-c", "log_statement=all"]
+    environment:
+      - POSTGRES_DB=expensetracker
+      - POSTGRES_USER=postgres
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_PASSWORD=nusyn
+    ports:
+      - '5432:5432'
