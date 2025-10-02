@@ -3,39 +3,23 @@ package com.expensetracker.service.impl;
 import com.expensetracker.model.User;
 import com.expensetracker.repository.UserRepository;
 import com.expensetracker.service.UserService;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ActiveProfiles("test")
 @DataJpaTest
 class UserServiceImplTest {
 
-    private UserService userService;
-
-    @PersistenceContext
-    private EntityManager entityManager;
+    private final UserService userService;
 
     @Autowired
     UserServiceImplTest(UserRepository userRepository) {
         this.userService = new UserServiceImpl(userRepository);
     }
-
-    @BeforeEach
-    void setupThis(){
-        entityManager.createNativeQuery("CREATE SEQUENCE  user_seq").executeUpdate();
-    }
-
-    @AfterEach
-    void finishThis(){
-        entityManager.createNativeQuery("DROP SEQUENCE user_seq").executeUpdate();
-    }
-
 
     @Test
     void saveEntityInDatabaseAndReadIt() {
